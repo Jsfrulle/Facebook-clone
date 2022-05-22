@@ -14,6 +14,7 @@ const userReducer = createSlice({
     bMonth: "",
     bDay: "",
     mode: true,
+    theme:'light-theme',
   
   },
 
@@ -50,6 +51,9 @@ const userReducer = createSlice({
     },
     setMode: (store, action) => {
       store.mode = action.payload;
+    },
+    setTheme: (store, action) => {
+      store.theme = action.payload;
     },
    
   }

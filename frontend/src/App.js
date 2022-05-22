@@ -1,15 +1,24 @@
 import { PageRoutes } from "./PageRoutes";
-import { configureStore } from "@reduxjs/toolkit";
-import { Provider } from "react-redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import rootReducer from "./reducers/rootReducer";
+import React from "react";
+import { Theme } from "./components/theme";
+import "./index.css";
+import { useSelector } from "react-redux";
+import user from "./reducers/userReducer";
 
-const store = configureStore({ reducer: rootReducer, composeWithDevTools } );
+export const App = () => {
+  const themes = useSelector((store) => store.user.theme);
 
-export const App = () => (
-  <Provider store={store}>
-    <PageRoutes />
-  </Provider>
-);
+  React.useEffect(() => {
+    document.documentElement.className = themes;
+    localStorage.setItem("themes", themes);
+  }, [themes]);
+
+  return (
+    <div body={themes}>
+      <Theme />
+      <PageRoutes />
+    </div>
+  );
+};
 
 export default App;
