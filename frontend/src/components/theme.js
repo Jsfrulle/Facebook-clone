@@ -1,32 +1,28 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import theme from "./theme.css";
 import user from "../reducers/userReducer";
-import { useSelector, useDispatch, } from "react-redux";
-
-
+import { useSelector, useDispatch } from "react-redux";
 
 export const Theme = () => {
-
   const theme = useSelector((store) => store.user.theme);
-  const [color, setColor] = useState(theme)
+  const [color, setColor] = useState(theme);
   const dispatch = useDispatch();
 
-  const toggleTheme = () =>{
-    if(color==='light-theme'){
-      dispatch(user.actions.setTheme('dark-theme'));
-      setColor('dark-theme')
-      
-    }else{
+  const toggleTheme = () => {
+    if (color === "light-theme") {
+      dispatch(user.actions.setTheme("dark-theme"));
+      setColor("dark-theme");
+    } else {
       dispatch(user.actions.setTheme("light-theme"));
-      setColor('light-theme')
-     
+      setColor("light-theme");
     }
-  }
+  };
 
   return (
-    <div 
+    <div
       style={{
         position: "absolute",
+        background: "transparent",
         display: "flex",
         justifyContent: "flex-end",
         alignItems: "flex-end",
@@ -34,7 +30,7 @@ export const Theme = () => {
         width: "100%"
       }}
     >
-      <div style={{ position: "relative", padding: "1%" }} >
+      <div style={{ position: "relative", padding: "1%" }}>
         <input className="l" type="checkbox" onClick={toggleTheme} />
       </div>
     </div>
