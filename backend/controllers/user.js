@@ -80,6 +80,7 @@ exports.register = async (req, res) => {
     const token = generateToken({ id: user._id.toString() }, "7d");
 
     res.send({
+      response: {
       id: user._id,
       username: user.username,
       picture: user.picture,
@@ -88,7 +89,7 @@ exports.register = async (req, res) => {
       token: token,
       verified: user.verified,
       message: "registration successful! Please activate your account to start"
-    });
+     }});
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

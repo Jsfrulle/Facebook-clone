@@ -40,6 +40,7 @@
 }
 
 /* form */
+
 .loginFormTwo {
   width: 100%;
   height: 35vh;
@@ -53,6 +54,23 @@
   box-shadow: 2px 2px 2px var(--border-color);
   text-align: center;
 }
+
+.messageContainer {
+  width: 94%;
+  position: relative;
+}
+.messageP {
+  margin: 0;
+  position: absolute;
+  text-align: left;
+  width: fit-content;
+  background-color: var(--bg-message);
+  font-family: Geneva, Tahoma, sans-serif;
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  padding: 0 0.2rem 0 0.1rem;
+}
+
 .loginFormTwo input,
 button {
   width: 94%;
@@ -75,6 +93,15 @@ button {
 .loginFormTwo input::placeholder {
   color: var(--color-secondary);
 }
+
+input:focus:invalid {
+  outline: none;
+  border: rgb(185, 184, 184) 2px solid;
+  background: url("https://assets.digitalocean.com/labs/icons/exclamation-triangle-fill.svg")
+    no-repeat 95% 50%;
+  background-size: 25px;
+}
+
 .btnLogin {
   margin-top: 1.5rem;
   max-width: 350px;
@@ -86,14 +113,14 @@ button {
 .btnLogin:hover {
   background-color: var(--blue-color-shadow);
 }
-.loginFormTwo p {
+.textForgotPassword {
   margin-top: 1rem;
   font-size: 1rem;
   font-weight: 50;
   color: var(--blue-color);
   background-color: var(--bg-always-whiteish);
 }
-.loginFormTwo p:hover {
+.textForgotPassword:hover {
   color: var(--blue-color-shadow);
 }
 
@@ -122,7 +149,7 @@ button {
 .createForm {
   width: 100%;
   height: 67vh;
-  min-height: 600px;
+  min-height: 650px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -157,9 +184,9 @@ button {
 }
 
 .createRadio {
-  height: 2.5rem;
+  height: 2rem;
   width: 100%;
-  margin: 1% 0 4% 0;
+  margin: 0% 0 2% 0;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -226,23 +253,26 @@ button {
   color: var(--color-third);
 }
 
+/* POPUP -User successfully created */
 
-.popUp{
-
-position: absolute;
-display: flex;
-justify-content: center;
-align-items: center;
-text-align: center;
-height:40vh;
-width: 75vw;
-background-color: var(--shadow-3);
-
-
-
+.popUp {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 20vh;
+  min-height: 200px;
+  width: 75vw;
+  max-width: 602px;
+  background-color: var(--shadow-3);
 }
-.popUp h1{ background-color: transparent; color: white; text-shadow: 2px 2px 1px var(--shadow-3); font-size: 2rem; }
-
+.popUp h1 {
+  background-color: transparent;
+  color: white;
+  text-shadow: 2px 2px 1px var(--shadow-3);
+  font-size: 2rem;
+}
 
 @media (max-width: 360px) {
   .loginFormOne img {

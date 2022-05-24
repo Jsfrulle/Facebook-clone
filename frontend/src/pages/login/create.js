@@ -15,7 +15,7 @@ export const Create = () => {
   const [bMonth, setBMonth] = useState("");
   const [bDay, setBDay] = useState("");
   const [notificationPopup, setNotificationPopup] = useState(false);
-
+  const [message, setMessage] = useState("");
   const onClick = () => {
     dispatch(user.actions.setMode(true));
   };
@@ -23,58 +23,72 @@ export const Create = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    const options = {
-      method: "POST",
+    if (
+      firstName === "" ||
+      lastName === "" ||
+      email === "" ||
+      password === "" ||
+      gender === "" ||
+      bDay === ""
+    ) {
+      if (gender === "") {
+        setMessage("Please select a gender");
+      }
+    } else {
+      const options = {
+        method: "POST",
 
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        first_name: firstName,
-        last_name: lastName,
-        password: password,
-        email,
-        gender,
-        bYear,
-        bMonth,
-        bDay
-      })
-    };
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          first_name: firstName,
+          last_name: lastName,
+          password: password,
+          email,
+          gender,
+          bYear,
+          bMonth,
+          bDay
+        })
+      };
 
-    await fetch(`http://localhost:8080/register`, options)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data) {
-          setNotificationPopup(true);
+      await fetch(`http://localhost:8080/register`, options)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.response) {
+            setNotificationPopup(true);
 
-          setTimeout(() => {
-            dispatch(user.actions.setMode(true));
-            setNotificationPopup(false);
-            setFirstName("");
-            setLastName("");
-            setPassword("");
-            setEmail("");
-            setBDay("");
-            setBMonth("");
-            setBYear("");
-          }, 2000);
+            setTimeout(() => {
+              dispatch(user.actions.setMode(true));
+              setNotificationPopup(false);
+              setFirstName("");
+              setLastName("");
+              setPassword("");
+              setEmail("");
+              setBDay("");
+              setBMonth("");
+              setBYear("");
+            }, 2000);
 
-          batch(() => {
-            dispatch(user.actions.setFirstName(data.first_name));
-            dispatch(user.actions.setLastName(data.last_name));
-            dispatch(user.actions.setEmail(data.email));
-            dispatch(user.actions.setGender(data.gender));
-            dispatch(user.actions.setBYear(data.bYear));
-            dispatch(user.actions.setBMonth(data.bMonth));
-            dispatch(user.actions.setBDay(data.bDay));
-            console.log(data.message);
-          });
-        } else {
-          batch(() => {
-            console.log(data.message, "no");
-          });
-        }
-      });
+            batch(() => {
+              dispatch(user.actions.setFirstName(data.response.first_name));
+              dispatch(user.actions.setLastName(data.response.last_name));
+              dispatch(user.actions.setEmail(data.response.email));
+              dispatch(user.actions.setGender(data.response.gender));
+              dispatch(user.actions.setBYear(data.response.bYear));
+              dispatch(user.actions.setBMonth(data.response.bMonth));
+              dispatch(user.actions.setBDay(data.response.bDay));
+              console.log(data.response.message);
+            });
+          } else {
+            batch(() => {
+              console.log(data.message);
+              setMessage(data.message);
+            });
+          }
+        });
+    }
   };
 
   return (
@@ -98,31 +112,83 @@ export const Create = () => {
           </div>
           <div className="createForm">
             <input
+              type="email"
+              placeholder="Email"
+              value={email.toLocaleLowerCase()}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+
+            <div className="messageContainer" style={{ margin: "0.3rem 0" }}>
+              {message.includes("email") ? (
+                <p className="messageP"> {message} </p>
+              ) : (
+                ""
+              )}{" "}
+            </div>
+
+            <input
+              minLength={2}
+              maxLength={20}
               type="text"
               placeholder="Firstname"
               value={firstName.toLocaleLowerCase()}
               onChange={(e) => setFirstName(e.target.value)}
             ></input>
+            <div className="messageContainer" style={{ margin: "0.3rem 0" }}>
+              {message.includes("Firstname") ? (
+                <p className="messageP"> {message} </p>
+              ) : (
+                ""
+              )}{" "}
+            </div>
             <input
+              minLength={2}
+              maxLength={20}
               type="text"
               placeholder="Lastname"
               value={lastName.toLocaleLowerCase()}
               onChange={(e) => setLastName(e.target.value)}
             ></input>
+            <div className="messageContainer" style={{ margin: "0.3rem 0" }}>
+              {message.includes("Lastname") ? (
+                <p className="messageP"> {message} </p>
+              ) : (
+                ""
+              )}{" "}
+            </div>
+
             <input
-              type="text"
-              placeholder="Email"
-              value={email.toLocaleLowerCase()}
-              onChange={(e) => setEmail(e.target.value)}
-            ></input>
-            <input
+              minLength={6}
+              maxLength={40}
               type="text"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></input>
-            <input type="text" placeholder="Gender" value={gender}></input>
+            <div className="messageContainer" style={{ margin: "0.3rem 0" }}>
+              {message.includes("Password") ? (
+                <p className="messageP"> {message} </p>
+              ) : (
+                ""
+              )}{" "}
+            </div>
 
+            <div className="divPYear">
+              <p>When were you born?</p>
+            </div>
+            <input
+              type="date"
+              required
+              onChange={(e) => (
+                setBYear(e.target.value.slice(0, 4)),
+                setBMonth(e.target.value.slice(5, 7)),
+                setBDay(e.target.value.slice(8, 10))
+              )}
+            />
+
+            <div style={{ marginTop: "1rem" }} className="divPYear">
+              <p>What is your gender?</p>
+            </div>
             <div className="createRadio">
               <div class="radio-item">
                 <input
@@ -156,18 +222,13 @@ export const Create = () => {
                 <label for="radio-other">Other</label>
               </div>
             </div>
-
-            <div className="divPYear">
-              <p>When were you born?</p>
+            <div className="messageContainer" style={{ margin: "0.5rem 0" }}>
+              {message.includes("gender") ? (
+                <p className="messageP"> {message} </p>
+              ) : (
+                ""
+              )}{" "}
             </div>
-            <input
-              type="date"
-              onChange={(e) => (
-                setBYear(e.target.value.slice(0, 4)),
-                setBMonth(e.target.value.slice(5, 7)),
-                setBDay(e.target.value.slice(8, 10))
-              )}
-            />
 
             <div className="btnCreateContainer">
               <button type="submit" className="btnSignUp">

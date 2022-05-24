@@ -6,7 +6,7 @@ import styles from "./style.css";
 export const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [message, setMessage] = useState("");
   const dispatch = useDispatch();
 
   const accessToken = useSelector((store) => store.user.token);
@@ -59,6 +59,7 @@ export const SignIn = () => {
         } else {
           batch(() => {
             console.log(data.message);
+            setMessage(data.message);
           });
         }
       });
@@ -75,9 +76,17 @@ export const SignIn = () => {
             </h1>
           </div>
           <div className="loginFormTwo">
+            <div className="messageContainer" style={{ margin: "0.7rem 0" }}>
+              {message.includes("email") ? (
+                <p className="messageP"> {message} </p>
+              ) : (
+                ""
+              )}
+            </div>
             <input
               type="text"
-              placeholder="Email adress or phone number"
+              minLength={3}
+              placeholder="Email adress or phonenumber"
               autocomplete="off"
               required="required"
               value={email.toLocaleLowerCase()}
@@ -86,16 +95,25 @@ export const SignIn = () => {
             <input
               id="password"
               type="password"
+              minLength={6}
+              maxLength={40}
               value={password}
               autocomplete="off"
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               required="required"
             ></input>
+            <div className="messageContainer" style={{ margin: "0.7rem 0" }}>
+              {message.includes("Password") ? (
+                <p className="messageP"> {message} </p>
+              ) : (
+                ""
+              )}{" "}
+            </div>
             <button type="submit" className="btnLogin" onSubmit={onSubmit}>
               Log in
             </button>
-            <p> Forgotten password?</p>
+            <p className="textForgotPassword"> Forgotten password?</p>
 
             <button type="submit" className="btnCreate" onClick={onClick}>
               Create Account
