@@ -74,16 +74,11 @@ export const SignIn = () => {
             <h1>
               Facebook helps you connect and share with the people in your life
             </h1>
+            
           </div>
           <div className="loginContainer">
           <div className="loginFormTwo">
-            <div className="messageContainer" >
-              {message.includes("email") ? (
-                <p className="messageP"> {message} </p>
-              ) : (
-                ""
-              )}
-            </div>
+         
             <input
               type="text"
               minLength={3}
@@ -104,13 +99,7 @@ export const SignIn = () => {
               placeholder="Password"
               required="required"
             ></input>
-            <div className="messageContainer" >
-              {message.includes("Password") ? (
-                <p className="messageP"> {message} </p>
-              ) : (
-                ""
-              )}{" "}
-            </div>
+           
             <button type="submit" className="btnLogin" onSubmit={onSubmit}>
               Log in
             </button>
@@ -119,6 +108,13 @@ export const SignIn = () => {
             <button type="submit" className="btnCreate" onClick={onClick}>
               Create Account
             </button>
+            <div className="messageContainer" >
+              {message ? (
+                <p className="messageP"> {message} </p>
+              ) : (
+                ""
+              )}
+            </div>
           </div>
           <h3 className="textInfoBusiness">
             {" "}

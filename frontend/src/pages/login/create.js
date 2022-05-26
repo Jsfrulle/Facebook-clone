@@ -109,6 +109,15 @@ export const Create = () => {
             <h1>
               Facebook helps you connect and share with the people in your life
             </h1>
+
+            <div className="messageContainerCreate" >
+              {message ? (
+                <p className="messageP"> {message} </p>
+              ) : (
+                ""
+              )}{" "}
+            </div> 
+
           </div>
           <div className="createForm">
             <input
@@ -118,13 +127,7 @@ export const Create = () => {
               onChange={(e) => setEmail(e.target.value)}
             ></input>
 
-            <div className="messageContainer" style={{ margin: "0.3rem 0" }}>
-              {message.includes("email") ? (
-                <p className="messageP"> {message} </p>
-              ) : (
-                ""
-              )}{" "}
-            </div>
+           
 
             <input
               minLength={2}
@@ -134,13 +137,7 @@ export const Create = () => {
               value={firstName.toLocaleLowerCase()}
               onChange={(e) => setFirstName(e.target.value)}
             ></input>
-            <div className="messageContainer" style={{ margin: "0.3rem 0" }}>
-              {message.includes("Firstname") ? (
-                <p className="messageP"> {message} </p>
-              ) : (
-                ""
-              )}{" "}
-            </div>
+         
             <input
               minLength={2}
               maxLength={20}
@@ -149,13 +146,7 @@ export const Create = () => {
               value={lastName.toLocaleLowerCase()}
               onChange={(e) => setLastName(e.target.value)}
             ></input>
-            <div className="messageContainer" style={{ margin: "0.3rem 0" }}>
-              {message.includes("Lastname") ? (
-                <p className="messageP"> {message} </p>
-              ) : (
-                ""
-              )}{" "}
-            </div>
+           
 
             <input
               minLength={6}
@@ -165,13 +156,7 @@ export const Create = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></input>
-            <div className="messageContainer" style={{ margin: "0.3rem 0" }}>
-              {message.includes("Password") ? (
-                <p className="messageP"> {message} </p>
-              ) : (
-                ""
-              )}{" "}
-            </div>
+           
 
             <div className="divPYear">
               <p>When were you born?</p>
@@ -222,13 +207,7 @@ export const Create = () => {
                 <label for="radio-other">Other</label>
               </div>
             </div>
-            <div className="messageContainer" style={{ margin: "0.5rem 0" }}>
-              {message.includes("gender") ? (
-                <p className="messageP"> {message} </p>
-              ) : (
-                ""
-              )}{" "}
-            </div>
+           
 
             <div className="btnCreateContainer">
               <button type="submit" className="btnSignUp">
@@ -244,7 +223,9 @@ export const Create = () => {
               </button>
             </div>
           </div>
+        
         </form>
+      
       </div>
     </div>
   );
