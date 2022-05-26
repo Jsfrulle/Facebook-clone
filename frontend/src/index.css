@@ -1,17 +1,25 @@
 * {
-  padding: 0;
-  margin: 0;
+  padding: 0 0 ;
+  margin: 0 0 ;
   box-sizing: border-box;
-  background-color: var(--bg-primary);
+
 }
-.container {
-  background-color: var(--bg-primary);
+.container{
+
+  padding: 0 auto;
+  margin: 0 auto;
+  width: 100vw;
+height: 100vh;
+
 }
+
 body {
   font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-  background-color: var(--bg-primary);
-
+  padding: 0 0;
+  margin: 0 0;
   overflow-x: hidden;
+  width: 100%;
+height: 100vh;
 }
 body::-webkit-scrollbar {
   display: none;
@@ -24,8 +32,8 @@ a {
   color: inherit;
 }
 :root {
-  --bg-primary: #fff;
-  --bg-secondary: #0c0c0c;
+  --bg-primary: #fff;;
+  --bg-secondary: #f0f2f5;
   --bg-third: rgb(247, 247, 247);
   --bg-forth: #f0f2f5;
   --color-primary: #050505;
@@ -50,8 +58,8 @@ a {
 }
 
 .ligth-theme {
-  --bg-primary: #fff;
-  --bg-secondary: #f0f2f5;
+  --bg-primary: #fff;;
+  --bg-secondary: #f0f2f5;;
   --bg-third: rgb(247, 247, 247);
   --bg-forth: #f0f2f5;
   --color-primary: #050505;
@@ -76,11 +84,11 @@ a {
 }
 
 .dark-theme {
-  --bg-primary: rgb(48, 45, 45);
-  --bg-secondary: #ffffff;
+  --bg-primary: rgb(93, 93, 93);
+  --bg-secondary: #171616;
   --bg-third: #858484;
   --bg-forth: #c1c1c1;
-  --color-primary: #f2f2f2;
+  --color-primary: #c1c1c1;
   --color-secondary: #9c9ea0;
   --divider: #ced0d4;
   --dark-bg-primary: #18191a;
@@ -88,10 +96,10 @@ a {
   --dark-bg-third: #3a3b3c;
   --dark-color-primary: #242526;
   --dark-color-secondary: #b0b3b8;
-  --blue-color: #10478f;
-  --blue-color-shadow: #082f62;
-  --green-color: #266d17;
-  --green-color-shadow: #1a4711;
+  --blue-color: #587dae;
+  --blue-color-shadow: #334d70;
+  --green-color: #5e8b55;
+  --green-color-shadow: #42573e;
   --light-blue-color: #e7f3ff;
   --border-color: #a0a0a0;
   --shadow-1: rgba(0, 0, 0, 0.2);

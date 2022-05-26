@@ -14,7 +14,7 @@ export const App = () => {
   }, [themes]);
 
   return (
-    <div body={themes}>
+    <div style={{width: '100vw', height: '100vh'}} body={themes}>
       <Theme />
       <PageRoutes />
     </div>

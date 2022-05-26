@@ -1,57 +1,72 @@
+
 .login-wrapper {
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  color: var(--color-primary);
+ 
 }
 
 .login-wrap {
-  width: 75vw;
-  max-width: 900px;
+  width: 100vw;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: var(--bg-secondary);
 }
 
 /* imgae and text */
 
 .loginFormOne {
-  width: 96%;
-  margin-bottom: 1em;
+  width: 50vh;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-color: var(--bg-secondary);
 }
 .loginFormOne img {
-  max-width: 600px;
-  margin-bottom: -0.5rem;
+  margin-top: 15px;
+
+  width: 300px;
+  background-color: var(--bg-secondary);
 }
 .loginFormOne h1 {
   color: var(--color-primary);
-  font-size: 1.4em;
+  font-size: 1.5em;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 300;
   word-wrap: normal;
+  background-color: var(--bg-secondary);
 }
 
 /* form */
-
-.loginFormTwo {
-  width: 100%;
-  height: 35vh;
-  min-height: 370px;
+.login {
+  width: 100vw;
+  height: 720px;
+  background-color: var(--bg-secondary);
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--bg-third);
+}
+.loginFormTwo {
+  width: 390px;
+  height: 350px;
+  display: flex;
+  padding: 15px 0;
+
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-primary);
   border-radius: 10px;
-  border: 1px solid var(--border-color);
-  box-shadow: 2px 2px 2px var(--border-color);
+
+  box-shadow: 1px 3px 7px var(--border-color);
   text-align: center;
 }
 
@@ -67,27 +82,24 @@
   background-color: var(--bg-message);
   font-family: Geneva, Tahoma, sans-serif;
   color: var(--color-primary);
-  font-size: 0.9rem;
+  font-size: 16px;
   padding: 0 0.2rem 0 0.1rem;
 }
 
-.loginFormTwo input,
-button {
-  width: 94%;
-  height: 25%;
-  max-height: 60px;
-  max-width: 750px;
-  margin-top: 1.1rem;
-  border-radius: 5px;
+.loginFormTwo input {
+  width: 93%;
+  height: 50px;
+  margin-bottom: 10px;
+  border-radius: 4px;
   border: 1px solid var(--border-color);
-  box-shadow: 2px 2px 3px var(--border-color);
+
   outline: none;
   padding-left: 0.5rem;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   font-size: 1.2rem;
   font-weight: 50;
-  background-color: var(--bg-forth);
+  background-color: var(--bg-primary);
   color: var(--color-secondary);
 }
 .loginFormTwo input::placeholder {
@@ -103,10 +115,12 @@ input:focus:invalid {
 }
 
 .btnLogin {
-  margin-top: 1.5rem;
-  max-width: 350px;
+  height: 50px;
+  max-width: 370px;
   background-color: var(--blue-color);
-  border-radius: 7px;
+  border-radius: 5px;
+  box-shadow: none;
+  margin: 7px 0 0 0;
   font-weight: 800;
   color: white;
 }
@@ -114,19 +128,28 @@ input:focus:invalid {
   background-color: var(--blue-color-shadow);
 }
 .textForgotPassword {
-  margin-top: 1rem;
-  font-size: 1rem;
-  font-weight: 50;
+  font-size: 14px;
+  margin: 15px 0px 15px 0;
+  font-weight: 400;
   color: var(--blue-color);
   background-color: var(--bg-always-whiteish);
 }
 .textForgotPassword:hover {
   color: var(--blue-color-shadow);
 }
+.hr {
+  height: 2px;
+  width: 330px;
+
+  margin: 5px 0 25px 0;
+  border-bottom: 1px solid var(--divider);
+}
 
 .btnCreate {
-  margin: 2.3rem 0 2rem 0;
+  margin: 0 0 10px 0;
   width: 65%;
+  height: 50px;
+  box-shadow: none;
   max-width: 200px;
   background-color: var(--green-color);
   color: white;
@@ -135,21 +158,33 @@ input:focus:invalid {
   background-color: var(--green-color-shadow);
 }
 .textInfoBusiness {
-  margin: 1rem 0 0 0.7rem;
+  margin: 25px 0 0 7px;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
+  font-size: 14px;
   font-weight: 100;
+  background-color: var(--bg-secondary);
+  color: var(--color-secondary)
+  
 }
 .textInfoBusiness span {
+  background-color: var(--bg-secondary);
   font-weight: 600;
 }
 
 /* Create -component */
 
+.create {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-secondary);
+  align-items: center;
+}
+
 .createForm {
-  width: 100%;
-  height: 67vh;
-  min-height: 650px;
+  width: 350px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -160,6 +195,33 @@ input:focus:invalid {
   text-align: center;
   margin-bottom: 0px;
 }
+
+
+.createFormOne {
+  width: 40vh;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--bg-secondary);
+}
+.createFormOne img {
+  margin-top: 15px;
+
+  width: 300px;
+  background-color: var(--bg-secondary);
+}
+.createFormOne h1 {
+  color: var(--color-primary);
+  font-size: 22px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 300;
+  word-wrap: normal;
+  background-color: var(--bg-secondary);
+}
+
 .createForm input,
 button {
   width: 94%;
@@ -274,41 +336,26 @@ button {
   font-size: 2rem;
 }
 
-@media (max-width: 360px) {
+@media (min-width: 1023px) {
+  .login {
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  .loginFormOne {
+    width: 500px;
+    margin-right: 50px;
+    align-items: flex-start;
+
+    text-align: left;
+  }
   .loginFormOne img {
-    max-width: 400px;
+    margin: 0px 0 0px -35px;
   }
   .loginFormOne h1 {
-    font-size: 1em;
+    color: var(--color-primary);
+    font-size: 30px;
   }
-
-  .loginFormTwo input,
-  button {
-    font-size: 0.9rem;
-  }
-  .textInfoBusiness {
-    font-size: 0.7rem;
-  }
-  .createForm {
-    margin-bottom: 1rem;
-  }
-  .createForm input,
-  button {
-    font-size: 1rem;
-  }
-  .btnCreateContainer {
-    height: 20vh;
-    min-height: 160px;
-  }
-
-  .btnLoginCreate {
-    margin: 1rem 0 0rem 0;
-    width: 40%;
-    max-width: 150px;
-    background-color: var(--green-color);
-    color: white;
-    margin-bottom: 10px;
-  }
-}
-@media (max-width: 768px) {
 }

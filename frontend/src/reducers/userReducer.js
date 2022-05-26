@@ -13,7 +13,7 @@ const userReducer = createSlice({
     bYear: "",
     bMonth: "",
     bDay: "",
-    mode: true,
+    mode: false,
     theme:'light-theme',
   
   },

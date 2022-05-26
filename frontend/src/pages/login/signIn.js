@@ -75,8 +75,9 @@ export const SignIn = () => {
               Facebook helps you connect and share with the people in your life
             </h1>
           </div>
+          <div className="loginContainer">
           <div className="loginFormTwo">
-            <div className="messageContainer" style={{ margin: "0.7rem 0" }}>
+            <div className="messageContainer" >
               {message.includes("email") ? (
                 <p className="messageP"> {message} </p>
               ) : (
@@ -103,7 +104,7 @@ export const SignIn = () => {
               placeholder="Password"
               required="required"
             ></input>
-            <div className="messageContainer" style={{ margin: "0.7rem 0" }}>
+            <div className="messageContainer" >
               {message.includes("Password") ? (
                 <p className="messageP"> {message} </p>
               ) : (
@@ -114,7 +115,7 @@ export const SignIn = () => {
               Log in
             </button>
             <p className="textForgotPassword"> Forgotten password?</p>
-
+<div className="hr" ></div>
             <button type="submit" className="btnCreate" onClick={onClick}>
               Create Account
             </button>
@@ -122,7 +123,7 @@ export const SignIn = () => {
           <h3 className="textInfoBusiness">
             {" "}
             <span>Create a page</span> for celeberity, brand or business.
-          </h3>
+          </h3></div>
         </form>
       </div>
       <div className="regiter"></div>

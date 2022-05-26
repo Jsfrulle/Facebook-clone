@@ -13,15 +13,15 @@ export const Login = () => {
   }, [modes]);
 
   return (
-    <div className="login">
+    <div >
       {mode ? (
-        <div className="login">
+       
           <SignIn />
-        </div>
+       
       ) : (
-        <div className="login">
+       
           <Create />
-        </div>
+        
       )}
     </div>
   );

@@ -92,7 +92,7 @@ export const Create = () => {
   };
 
   return (
-    <div className="login-wrapper">
+    <div className="create-wrapper">
       {notificationPopup ? (
         <div className="popUp">
           {" "}
@@ -102,9 +102,9 @@ export const Create = () => {
         ""
       )}
 
-      <div className="login-wrap">
-        <form className="login" onSubmit={onSubmit}>
-          <div className="loginFormOne">
+      <div className="create-wrap">
+        <form className="create" onSubmit={onSubmit}>
+          <div className="createFormOne">
             <img src="../../icons/facebook.svg" alt="Facebook" className="" />
             <h1>
               Facebook helps you connect and share with the people in your life

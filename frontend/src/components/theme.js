@@ -30,7 +30,7 @@ export const Theme = () => {
         width: "100%"
       }}
     >
-      <div style={{ position: "relative", padding: "1%" }}>
+      <div style={{ position: "relative", padding: "1%",  background: "transparent", }}>
         <input className="l" type="checkbox" onClick={toggleTheme} />
       </div>
     </div>

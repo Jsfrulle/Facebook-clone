@@ -1,5 +1,6 @@
 input {
   display: block;
+
 }
 main {
   padding: 1.5em 0 0 0;
@@ -8,7 +9,7 @@ main {
   border-radius: 0.75em;
   box-shadow: 0.125em 0.125em 0 0.125em rgba(0, 0, 0, 0.3) inset;
   color: #fbea89;
-  background-color: rgb(235, 232, 232);
+ 
   display: inline-flex;
   align-items: center;
   margin: auto;
@@ -26,7 +27,7 @@ main {
   display: block;
 }
 .l:before {
-  background-color: #eaf2fd;
+  background-color: var(--bg-secondary);
   border-radius: 50%;
   width: 1.2em;
   height: 1.2em;
