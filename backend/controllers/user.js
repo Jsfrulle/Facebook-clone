@@ -73,14 +73,13 @@ exports.register = async (req, res) => {
     /* Set up a email verification function   */
     const emailVerificationToken = generateToken(
       { id: user._id.toString() },
-      "30s"
+      "30m"
     );
     const url = `${process.env.BASE_URL}/activate/${emailVerificationToken}`;
     sendVerificationEmail(user.email, user.first_name, url);
     const token = generateToken({ id: user._id.toString() }, "7d");
 
-    res.send({
-      response: {
+    res.status(200).json({response:{
       id: user._id,
       username: user.username,
       picture: user.picture,
@@ -88,8 +87,8 @@ exports.register = async (req, res) => {
       last_name: user.last_name,
       token: token,
       verified: user.verified,
-      message: "registration successful! Please activate your account to start"
-     }});
+      message: "registration successful! Please activate your account to start"}
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -106,7 +105,17 @@ exports.activateAccount = async (req, res) => {
         .json({ message: "This email-adress is already activated" });
     } else {
       await User.findByIdAndUpdate(user.id, { verified: true });
-      return res.status(200).json({ message: "Your account is now activated" });
+      return res.status(200).json({ 
+        
+        response: {
+          id: user._id,
+          username: user.username,
+          picture: user.picture,
+          first_name: user.first_name,
+          last_name: user.last_name,
+          token: token,
+          verified: user.verified,
+        message: "Your account is now activated"  }})
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -148,7 +157,7 @@ exports.login = async (req, res) => {
       /* Set up a email verification function   */
       const emailVerificationToken = generateToken(
         { id: user._id.toString() },
-        "30m"
+        "60m"
       );
     } else {
       return res.status(400).json({ message: "Password is incorrect" });
@@ -156,4 +165,8 @@ exports.login = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
+};
+
+exports.auth = async (req, res) => {
+  return res.status(200).json({ message: "Authentication successful" });
 };

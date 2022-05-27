@@ -1,0 +1,34 @@
+
+.containerActivate{
+
+height: 100vh;
+width: 100vw;
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+
+.popUp {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 200px;
+  top: 35%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  border-radius: 10px;
+  width: 25rem;
+  background-color: var(--shadow-1);
+}
+.popUp h1 {
+  background-color: transparent;
+  color: white;
+  text-shadow: 2px 2px 1px var(--shadow-3);
+  font-size: 2rem;
+}

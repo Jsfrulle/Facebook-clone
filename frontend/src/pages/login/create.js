@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, batch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import user from "../../reducers/userReducer";
 import styles from "./style.css";
 export const Create = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+ 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -14,8 +13,8 @@ export const Create = () => {
   const [bYear, setBYear] = useState("");
   const [bMonth, setBMonth] = useState("");
   const [bDay, setBDay] = useState("");
-  const [notificationPopup, setNotificationPopup] = useState(false);
-  const [message, setMessage] = useState("");
+  const [notificationPopupReg, setNotificationPopupReg] = useState(false);
+  const [message, setMessage] = useState('hello world');
   const onClick = () => {
     dispatch(user.actions.setMode(true));
   };
@@ -57,11 +56,12 @@ export const Create = () => {
         .then((response) => response.json())
         .then((data) => {
           if (data.response) {
-            setNotificationPopup(true);
+            setNotificationPopupReg(true);
 
             setTimeout(() => {
+           
               dispatch(user.actions.setMode(true));
-              setNotificationPopup(false);
+              setNotificationPopupReg(false);
               setFirstName("");
               setLastName("");
               setPassword("");
@@ -93,7 +93,7 @@ export const Create = () => {
 
   return (
     <div className="create-wrapper">
-      {notificationPopup ? (
+      {notificationPopupReg ? (
         <div className="popUp">
           {" "}
           <h1>Registartion successful!!!! </h1>
@@ -110,14 +110,8 @@ export const Create = () => {
               Facebook helps you connect and share with the people in your life
             </h1>
 
-            <div className="messageContainerCreate" >
-              {message ? (
-                <p className="messageP"> {message} </p>
-              ) : (
-                ""
-              )}{" "}
-            </div> 
-
+            <div className="messageContainerCreate">
+              {message ? <p className="messageP"> {message} </p> : ""}</div>
           </div>
           <div className="createForm">
             <input
@@ -126,9 +120,7 @@ export const Create = () => {
               value={email.toLocaleLowerCase()}
               onChange={(e) => setEmail(e.target.value)}
             ></input>
-
-           
-
+<div className="createNameContainer"> 
             <input
               minLength={2}
               maxLength={20}
@@ -137,7 +129,7 @@ export const Create = () => {
               value={firstName.toLocaleLowerCase()}
               onChange={(e) => setFirstName(e.target.value)}
             ></input>
-         
+
             <input
               minLength={2}
               maxLength={20}
@@ -146,8 +138,7 @@ export const Create = () => {
               value={lastName.toLocaleLowerCase()}
               onChange={(e) => setLastName(e.target.value)}
             ></input>
-           
-
+</div>
             <input
               minLength={6}
               maxLength={40}
@@ -156,7 +147,6 @@ export const Create = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></input>
-           
 
             <div className="divPYear">
               <p>When were you born?</p>
@@ -207,7 +197,6 @@ export const Create = () => {
                 <label for="radio-other">Other</label>
               </div>
             </div>
-           
 
             <div className="btnCreateContainer">
               <button type="submit" className="btnSignUp">
@@ -223,9 +212,7 @@ export const Create = () => {
               </button>
             </div>
           </div>
-        
         </form>
-      
       </div>
     </div>
   );

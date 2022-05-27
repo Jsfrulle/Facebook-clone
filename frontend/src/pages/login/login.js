@@ -12,17 +12,5 @@ export const Login = () => {
     setMode(modes);
   }, [modes]);
 
-  return (
-    <div >
-      {mode ? (
-       
-          <SignIn />
-       
-      ) : (
-       
-          <Create />
-        
-      )}
-    </div>
-  );
+  return <div>{mode ? <SignIn /> : <Create />}</div>;
 };

@@ -8,14 +8,14 @@ const userReducer = createSlice({
     password: "",
     username: "",
     email: "",
-    token:"",
+    token: "",
     gender: "",
     bYear: "",
     bMonth: "",
     bDay: "",
-    mode: false,
-    theme:'light-theme',
-  
+    mode: true,
+    loading: false,
+    theme: "light-theme"
   },
 
   reducers: {
@@ -52,10 +52,12 @@ const userReducer = createSlice({
     setMode: (store, action) => {
       store.mode = action.payload;
     },
+    setLoading: (store, action) => {
+      store.loading = action.payload;
+    },
     setTheme: (store, action) => {
       store.theme = action.payload;
-    },
-   
+    }
   }
 });
 

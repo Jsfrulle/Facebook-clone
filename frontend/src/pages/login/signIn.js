@@ -7,10 +7,11 @@ export const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const dispatch = useDispatch();
-
   const accessToken = useSelector((store) => store.user.token);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+ 
 
   useEffect(() => {
     if (!accessToken) {
@@ -74,52 +75,45 @@ export const SignIn = () => {
             <h1>
               Facebook helps you connect and share with the people in your life
             </h1>
-            
           </div>
           <div className="loginContainer">
-          <div className="loginFormTwo">
-         
-            <input
-              type="text"
-              minLength={3}
-              placeholder="Email adress or phonenumber"
-              autocomplete="off"
-              required="required"
-              value={email.toLocaleLowerCase()}
-              onChange={(e) => setEmail(e.target.value)}
-            ></input>
-            <input
-              id="password"
-              type="password"
-              minLength={6}
-              maxLength={40}
-              value={password}
-              autocomplete="off"
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              required="required"
-            ></input>
-           
-            <button type="submit" className="btnLogin" onSubmit={onSubmit}>
-              Log in
-            </button>
-            <p className="textForgotPassword"> Forgotten password?</p>
-<div className="hr" ></div>
-            <button type="submit" className="btnCreate" onClick={onClick}>
-              Create Account
-            </button>
-            <div className="messageContainer" >
-              {message ? (
-                <p className="messageP"> {message} </p>
-              ) : (
-                ""
-              )}
+            <div className="loginFormTwo">
+              <input
+                type="text"
+                minLength={3}
+                placeholder="Email adress or phonenumber"
+                autocomplete="off"
+                required="required"
+                value={email.toLocaleLowerCase()}
+                onChange={(e) => setEmail(e.target.value)}
+              ></input>
+              <input
+                id="password"
+                type="password"
+                minLength={6}
+                maxLength={40}
+                value={password}
+                autocomplete="off"
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                required="required"
+              ></input>
+              <button type="submit" className="btnLogin" onSubmit={onSubmit}>
+                Log in
+              </button>
+              <p className="textForgotPassword"> Forgotten password?</p>
+              <div className="hr"></div>
+              <button type="submit" className="btnCreate" onClick={onClick}>
+                Create Account
+              </button>
+              <div className="messageContainer">
+                {message ? <p className="messageP"> {message} </p> : ""}
+              </div>
             </div>
+            <h3 className="textInfoBusiness">
+              <span>Create a page</span> for celeberity, brand or business.
+            </h3>
           </div>
-          <h3 className="textInfoBusiness">
-            {" "}
-            <span>Create a page</span> for celeberity, brand or business.
-          </h3></div>
         </form>
       </div>
       <div className="regiter"></div>
